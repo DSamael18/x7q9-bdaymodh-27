@@ -111,7 +111,7 @@ function createBalloons(){
 
   poppedCount = 0;
 
-  for(let i=0;i<10;i++){
+  for(let i=0;i<5;i++){
 
     const balloon =
     document.createElement("div");
@@ -137,9 +137,9 @@ function createBalloons(){
           "balloonStatus"
         )
         .textContent =
-        `${poppedCount}/10 balloons popped`;
+        `${poppedCount}/5 balloons popped`;
 
-        if(poppedCount === 10){
+        if(poppedCount === 5){
 
           setTimeout(()=>{
 
@@ -363,17 +363,21 @@ document.getElementById(
   "galleryImage"
 );
 
-document
-.getElementById(
-  "toGalleryBtn"
-)
-.addEventListener(
+document.addEventListener(
   "click",
-  ()=>{
+  function(e){
 
-    showScreen(
-      "gallery-screen"
-    );
+    if(
+      e.target &&
+      e.target.id ===
+      "toGalleryBtn"
+    ){
+
+      showScreen(
+        "gallery-screen"
+      );
+
+    }
 
   }
 );
