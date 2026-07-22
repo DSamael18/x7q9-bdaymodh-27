@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Pookie Modhu ❤️</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Password Screen -->
+  <section id="password-screen" class="screen active">
+    <h1>💖 Secret Birthday Surprise 💖</h1>
+
+    <p>
+      Only one person can unlock this...
+    </p>
+
+    <input
+      type="text"
+      id="passwordInput"
+      placeholder="Enter your special nickname"
+    >
+
+    <button id="unlockBtn">
+      Unlock ❤️
+    </button>
+
+    <p id="errorText"></p>
+  </section>
+
+  <!-- Countdown -->
+  <section id="countdown-screen" class="screen">
+    <h1 id="countdownNumber">3</h1>
+  </section>
+
+  <!-- Balloons -->
+  <section id="balloon-screen" class="screen">
+    <h1>🎈 Pop All Balloons 🎈</h1>
+
+    <p>
+      Pop every balloon to continue
+    </p>
+
+    <div id="balloonContainer"></div>
+
+    <p id="balloonStatus"></p>
+  </section>
+
+  <!-- Candle -->
+  <section id="candle-screen" class="screen">
+    <h1>🕯️ Make A Wish</h1>
+
+    <div id="candle">
+      🕯️
+    </div>
+
+    <p>
+      Blow into the microphone or tap the candle
+    </p>
+
+    <button id="enableMic">
+      Enable Microphone
+    </button>
+  </section>
+
+  <!-- Love Letter -->
+  <section id="letter-screen" class="screen">
+    <h1>💌 Open Your Letter</h1>
+
+    <div id="envelope">
+      ✉️
+    </div>
+
+    <div id="letterContent">
+      <h2>Happy Birthday Dear Pookie ❤️</h2>
+
+      <p>
+        On this special day, I wish you happiness,
+        good health, success, and all the wonderful
+        things life has to offer.
+      </p>
+
+      <p>
+        May your dreams come true and may every
+        moment of your life be filled with joy
+        and positivity.
+      </p>
+
+      <p>
+        I hope your birthday is filled with love,
+        laughter, and unforgettable memories with
+        your family and friends.
+      </p>
+
+      <p>
+        May the year ahead bring you new
+        opportunities, exciting adventures,
+        and endless reasons to smile.
+      </p>
+
+      <p>
+        You are always in my thoughts.
+      </p>
+
+      <p>
+        Wishing you a fantastic birthday and
+        a bright future ahead! ❤️
+      </p>
+
+      <button id="toGalleryBtn">
+        Continue 📸
+      </button>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery-screen" class="screen">
+
+    <h1>📸 Memories 📸</h1>
+
+    <img id="galleryImage" src="photo1.jpg">
+
+    <div>
+      <button id="prevBtn">
+        ⬅️ Prev
+      </button>
+
+      <button id="nextBtn">
+        Next ➡️
+      </button>
+    </div>
+
+    <button id="toGiftBtn">
+      Open Gift 🎁
+    </button>
+
+  </section>
+
+  <!-- Gift -->
+  <section id="gift-screen" class="screen">
+
+    <h1>🎁 Your Birthday Gift 🎁</h1>
+
+    <div id="giftBox">
+      🎁
+    </div>
+
+    <p>
+      Double tap the gift box
+    </p>
+
+  </section>
+
+  <!-- Final -->
+  <section id="final-screen" class="screen">
+
+    <h1>🎉 Happy Birthday Pookie 🎉</h1>
+
+    <div id="finalMessage">
+
+      <p>
+        Thank you for being amazing ❤️
+      </p>
+
+      <p>
+        You are always in my thoughts.
+      </p>
+
+      <p>
+        Wishing you a fantastic birthday and
+        a bright future ahead!
+      </p>
+
+    </div>
+
+    <div id="confettiContainer"></div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
