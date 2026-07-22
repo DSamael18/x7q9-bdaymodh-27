@@ -2,85 +2,147 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff8fc7,#ffd8ea);
+min-height:100vh;
 overflow:hidden;
-color:white;
+background:linear-gradient(135deg,#ff9ecf,#ffcce3,#ffd9ec);
+color:#fff;
+position:relative;
+}
+
+/* Floating Hearts */
+
+body::before,
+body::after{
+content:"💖 💕 💗 💓 💞";
+position:fixed;
+font-size:30px;
+opacity:.15;
+animation:floatHearts 20s linear infinite;
+pointer-events:none;
+white-space:nowrap;
+}
+
+body::before{
+top:100%;
+left:-20%;
+}
+
+body::after{
+top:120%;
+right:-20%;
+animation-duration:28s;
+}
+
+@keyframes floatHearts{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-140vh);
+}
 }
 
 .screen{
 display:none;
-width:100%;
 height:100vh;
-padding:20px;
-text-align:center;
+width:100%;
+padding:25px;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+text-align:center;
+animation:fadeIn .8s ease;
 }
 
 .active{
 display:flex;
 }
 
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 h1{
-font-size:2.5rem;
+font-size:3rem;
 margin-bottom:20px;
+text-shadow:0 3px 15px rgba(0,0,0,.2);
 }
 
 p{
 max-width:700px;
-margin:10px auto;
-line-height:1.7;
-}
-
-button{
-padding:12px 24px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-font-size:16px;
-margin:10px;
-background:white;
-color:#ff3f92;
-font-weight:bold;
+line-height:1.8;
+font-size:1.1rem;
 }
 
 input{
-padding:12px;
-width:280px;
+width:320px;
+padding:15px;
 border:none;
-border-radius:10px;
+border-radius:15px;
 font-size:16px;
 text-align:center;
+outline:none;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+background:#fff;
+color:#ff4d94;
+margin:10px;
+transition:.3s;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+button:hover{
+transform:translateY(-3px) scale(1.05);
 }
 
 #errorText{
 color:yellow;
+font-weight:bold;
 margin-top:15px;
 }
 
 #countdownNumber{
-font-size:120px;
-font-weight:bold;
+font-size:140px;
+font-weight:900;
+text-shadow:0 0 25px rgba(255,255,255,.6);
 }
 
 #balloonContainer{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:15px;
+gap:18px;
 max-width:700px;
-margin-top:20px;
+margin-top:25px;
 }
 
 .balloon{
-font-size:70px;
+font-size:80px;
 cursor:pointer;
-transition:.3s;
+transition:.4s;
+}
+
+.balloon:hover{
+transform:scale(1.15);
 }
 
 .balloon.popped{
@@ -89,51 +151,86 @@ opacity:0;
 }
 
 #candle{
-font-size:150px;
+font-size:180px;
 cursor:pointer;
-margin:20px;
+animation:flicker 1s infinite;
+}
+
+@keyframes flicker{
+0%{transform:rotate(-2deg);}
+50%{transform:rotate(2deg);}
+100%{transform:rotate(-2deg);}
 }
 
 #envelope{
-font-size:140px;
+font-size:150px;
 cursor:pointer;
+transition:.4s;
+}
+
+#envelope:hover{
+transform:scale(1.15);
 }
 
 #letterContent{
 display:none;
-background:white;
-color:#333;
-padding:20px;
-border-radius:20px;
-max-width:800px;
-margin-top:20px;
+max-width:850px;
+padding:25px;
+border-radius:25px;
+background:rgba(255,255,255,.25);
+backdrop-filter:blur(15px);
+box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
 #galleryImage{
-width:300px;
-height:400px;
+width:320px;
+height:450px;
 object-fit:cover;
-border-radius:20px;
-box-shadow:0 0 25px rgba(0,0,0,.3);
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+transition:.5s;
+}
+
+#galleryImage:hover{
+transform:scale(1.03);
 }
 
 #giftBox{
-font-size:180px;
+font-size:190px;
 cursor:pointer;
-user-select:none;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-15px);
+}
 }
 
 #finalMessage{
 background:rgba(255,255,255,.2);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(8px);
+backdrop-filter:blur(18px);
+padding:30px;
+border-radius:25px;
+max-width:800px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+#finalMessage p{
+font-size:1.2rem;
 }
 
 @media(max-width:768px){
 
 h1{
-font-size:2rem;
+font-size:2.4rem;
+}
+
+#countdownNumber{
+font-size:100px;
 }
 
 #galleryImage{
@@ -141,12 +238,16 @@ width:90%;
 height:auto;
 }
 
-#candle{
-font-size:120px;
+#giftBox{
+font-size:140px;
 }
 
-#giftBox{
+#candle{
 font-size:130px;
+}
+
+input{
+width:90%;
 }
 
 }
