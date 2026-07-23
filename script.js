@@ -376,99 +376,6 @@ const galleryImage =
 document.getElementById(
   "galleryImage"
 );
-let startX = 0;
-
-galleryImage.addEventListener(
-  "touchstart",
-  (e)=>{
-
-    startX =
-    e.touches[0].clientX;
-
-  }
-);
-
-galleryImage.addEventListener(
-  "touchend",
-  (e)=>{
-
-    let endX =
-    e.changedTouches[0].clientX;
-
-    let diff =
-    startX - endX;
-
-    // swipe left
-    if(diff > 50){
-
-      currentPhoto++;
-
-      if(
-        currentPhoto >=
-        photos.length
-      ){
-        currentPhoto = 0;
-      }
-
-      galleryImage.style.opacity = "0";
-
-setTimeout(()=>{
-
-  galleryImage.src =
-  photos[currentPhoto];
-
-  galleryImage.style.opacity = "1";
-
-},200);
-
-    }
-
-    // swipe right
-    else if(diff < -50){
-
-      currentPhoto--;
-
-      if(
-        currentPhoto < 0
-      ){
-        currentPhoto =
-        photos.length - 1;
-      }
-
-      galleryImage.style.opacity = "0";
-
-setTimeout(()=>{
-
-  galleryImage.src =
-  photos[currentPhoto];
-
-  galleryImage.style.opacity = "1";
-
-},200);
-
-    }
-
-  }
-);
-
-document.addEventListener(
-  "click",
-  function(e){
-
-    if(
-      e.target &&
-      e.target.id ===
-      "toGalleryBtn"
-    ){
-
-      showScreen(
-        "gallery-screen"
-      );
-
-    }
-
-  }
-);
 
 // Auto Slideshow
 
@@ -494,8 +401,18 @@ setInterval(()=>{
       currentPhoto = 0;
     }
 
-    galleryImage.src =
-    photos[currentPhoto];
+    galleryImage.style.opacity =
+    "0";
+
+    setTimeout(()=>{
+
+      galleryImage.src =
+      photos[currentPhoto];
+
+      galleryImage.style.opacity =
+      "1";
+
+    },300);
 
   }
 
