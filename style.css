@@ -371,3 +371,22 @@ transform:translateY(-8px);
 }
 
 }
+
+#galleryText{
+margin-top:15px;
+font-size:1.1rem;
+font-weight:600;
+animation:pulseText 2s infinite;
+}
+
+@keyframes pulseText{
+
+0%,100%{
+opacity:1;
+}
+
+50%{
+opacity:.5;
+}
+
+}
