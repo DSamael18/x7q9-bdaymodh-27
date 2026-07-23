@@ -171,8 +171,22 @@ document.getElementById(
 
 function candleDone(){
 
-  candle.innerHTML =
-  "💨";
+  const flame =
+  document.getElementById(
+    "flame"
+  );
+
+  const smoke =
+  document.getElementById(
+    "smoke"
+  );
+
+  flame.style.display =
+  "none";
+
+  smoke.classList.add(
+    "smoke-up"
+  );
 
   createHeartBurst();
 
@@ -182,7 +196,7 @@ function candleDone(){
       "letter-screen"
     );
 
-  },1500);
+  },2500);
 
 }
 
@@ -362,6 +376,80 @@ const galleryImage =
 document.getElementById(
   "galleryImage"
 );
+let startX = 0;
+
+galleryImage.addEventListener(
+  "touchstart",
+  (e)=>{
+
+    startX =
+    e.touches[0].clientX;
+
+  }
+);
+
+galleryImage.addEventListener(
+  "touchend",
+  (e)=>{
+
+    let endX =
+    e.changedTouches[0].clientX;
+
+    let diff =
+    startX - endX;
+
+    // swipe left
+    if(diff > 50){
+
+      currentPhoto++;
+
+      if(
+        currentPhoto >=
+        photos.length
+      ){
+        currentPhoto = 0;
+      }
+
+      galleryImage.style.opacity = "0";
+
+setTimeout(()=>{
+
+  galleryImage.src =
+  photos[currentPhoto];
+
+  galleryImage.style.opacity = "1";
+
+},200);
+
+    }
+
+    // swipe right
+    else if(diff < -50){
+
+      currentPhoto--;
+
+      if(
+        currentPhoto < 0
+      ){
+        currentPhoto =
+        photos.length - 1;
+      }
+
+      galleryImage.style.opacity = "0";
+
+setTimeout(()=>{
+
+  galleryImage.src =
+  photos[currentPhoto];
+
+  galleryImage.style.opacity = "1";
+
+},200);
+
+    }
+
+  }
+);
 
 document.addEventListener(
   "click",
@@ -378,52 +466,6 @@ document.addEventListener(
       );
 
     }
-
-  }
-);
-
-document
-.getElementById(
-  "nextBtn"
-)
-.addEventListener(
-  "click",
-  ()=>{
-
-    currentPhoto++;
-
-    if(
-      currentPhoto >=
-      photos.length
-    ){
-      currentPhoto = 0;
-    }
-
-    galleryImage.src =
-    photos[currentPhoto];
-
-  }
-);
-
-document
-.getElementById(
-  "prevBtn"
-)
-.addEventListener(
-  "click",
-  ()=>{
-
-    currentPhoto--;
-
-    if(
-      currentPhoto < 0
-    ){
-      currentPhoto =
-      photos.length - 1;
-    }
-
-    galleryImage.src =
-    photos[currentPhoto];
 
   }
 );
@@ -499,6 +541,8 @@ gift.addEventListener(
         "final-screen"
       );
 
+      createConfetti();
+
       createHeartBurst();
 
       createHeartBurst();
@@ -512,43 +556,28 @@ gift.addEventListener(
 
 function createHeartBurst(){
 
-  for(
-    let i=0;
-    i<25;
-    i++
-  ){
+  for(let i=0;i<25;i++){
 
     const heart =
-    document.createElement(
-      "div"
-    );
+    document.createElement("div");
 
-    heart.innerHTML =
-    "💖";
+    heart.innerHTML = "💖";
 
-    heart.style.position =
-    "fixed";
-
+    heart.style.position = "fixed";
     heart.style.left =
-    Math.random()*100
-    + "vw";
+      Math.random()*100 + "vw";
 
-    heart.style.top =
-    "100vh";
+    heart.style.top = "100vh";
 
     heart.style.fontSize =
-    (20+
-    Math.random()*25)
-    +"px";
+      (20 + Math.random()*25) + "px";
 
-    heart.style.zIndex =
-    "9999";
+    heart.style.zIndex = "9999";
 
     heart.style.transition =
-    "all 4s linear";
+      "all 4s linear";
 
-    document.body
-    .appendChild(
+    document.body.appendChild(
       heart
     );
 
@@ -571,3 +600,69 @@ function createHeartBurst(){
   }
 
 }
+
+// ---------- Confetti ----------
+
+function createConfetti(){
+
+  const colors = [
+    "#ff4d94",
+    "#ffcc00",
+    "#66ffcc",
+    "#66a3ff",
+    "#ffffff"
+  ];
+
+  for(let i=0;i<120;i++){
+
+    const confetti =
+    document.createElement("div");
+
+    confetti.className =
+    "confetti";
+
+    confetti.style.left =
+      Math.random()*100 + "vw";
+
+    confetti.style.background =
+      colors[
+        Math.floor(
+          Math.random() *
+          colors.length
+        )
+      ];
+
+    confetti.style.animationDelay =
+      Math.random()*2 + "s";
+
+    document.body.appendChild(
+      confetti
+    );
+
+    setTimeout(()=>{
+
+      confetti.remove();
+
+    },6000);
+
+  }
+
+}
+
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    if(
+      e.target &&
+      e.target.id ===
+      "replayBtn"
+    ){
+
+      location.reload();
+
+    }
+
+  }
+);
