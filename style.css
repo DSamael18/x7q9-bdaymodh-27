@@ -7,7 +7,9 @@ font-family:'Segoe UI',sans-serif;
 
 body{
 min-height:100vh;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:hidden;
+touch-action:pan-y;
 background:linear-gradient(135deg,#ff9ecf,#ffcce3,#ffd9ec);
 color:#fff;
 position:relative;
@@ -151,9 +153,11 @@ opacity:0;
 }
 
 #candle{
-font-size:180px;
+display:flex;
+flex-direction:column;
+align-items:center;
 cursor:pointer;
-animation:flicker 1s infinite;
+margin:20px 0;
 }
 
 @keyframes flicker{
@@ -187,8 +191,13 @@ width:320px;
 height:450px;
 object-fit:cover;
 border-radius:25px;
-box-shadow:0 15px 35px rgba(0,0,0,.2);
+box-shadow:
+0 15px 35px rgba(0,0,0,.2),
+0 0 25px rgba(255,255,255,.4);
 transition:.5s;
+user-select:none;
+-webkit-user-drag:none;
+touch-action:pan-y;
 }
 
 #galleryImage:hover{
@@ -242,12 +251,111 @@ height:auto;
 font-size:140px;
 }
 
-#candle{
-font-size:130px;
+#wax{
+width:50px;
+height:130px;
+}
+
+#flame{
+width:25px;
+height:40px;
 }
 
 input{
 width:90%;
 }
 
+}
+
+#wax{
+width:60px;
+height:160px;
+background:white;
+border-radius:10px;
+margin:auto;
+}
+
+#flame{
+width:30px;
+height:50px;
+background:orange;
+border-radius:50%;
+margin:auto;
+margin-bottom:-10px;
+animation:flicker .15s infinite;
+box-shadow:0 0 25px orange;
+}
+
+#smoke{
+display:none;
+width:20px;
+height:20px;
+background:rgba(255,255,255,.7);
+border-radius:50%;
+margin:auto;
+}
+
+.smoke-up{
+display:block !important;
+animation:smokeRise 3s forwards;
+}
+
+@keyframes smokeRise{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+
+}
+
+.confetti{
+position:fixed;
+top:-20px;
+width:12px;
+height:12px;
+border-radius:50%;
+pointer-events:none;
+animation:confettiFall 5s linear forwards;
+z-index:9999;
+}
+
+@keyframes confettiFall{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(720deg);
+opacity:0;
+}
+
+}
+
+#replayBtn{
+margin-top:25px;
+}
+
+#final-screen h1{
+animation:glowTitle 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowTitle{
+from{
+text-shadow:
+0 0 10px white,
+0 0 20px pink;
+}
+to{
+text-shadow:
+0 0 20px white,
+0 0 40px hotpink;
+}
 }
