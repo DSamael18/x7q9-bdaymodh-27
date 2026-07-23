@@ -346,7 +346,9 @@ envelope.addEventListener(
     letterContent.style.display =
     "block";
 
-    //typeWriterEffect(letterContent);
+    typeWriterEffect(
+      letterContent
+    );
 
   }
 );
@@ -385,6 +387,7 @@ setInterval(()=>{
   );
 
   if(
+    gallery &&
     gallery.classList.contains(
       "active"
     )
@@ -592,7 +595,7 @@ if(galleryBtn){
     currentPhoto = 0;
 
     galleryImage.src =
-    photos[0];
+    photos[currentPhoto];
 
     showScreen(
       "gallery-screen"
