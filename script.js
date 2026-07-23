@@ -41,7 +41,7 @@ unlockBtn.addEventListener("click",()=>{
   .trim()
   .toLowerCase();
 
-  if(value === "pookie modhu"){
+  if(value === "Pookie modhu"){
 
     errorText.textContent = "";
 
@@ -318,7 +318,7 @@ function typeWriterEffect(
   let i = 0;
 
   const timer =
-  setInterval(()=>{
+  const slideshow = setInterval(()=>{
 
     element.innerHTML =
     html.slice(0,i);
@@ -377,6 +377,8 @@ document.getElementById(
   "galleryImage"
 );
 
+galleryImage.src = photos[0];
+
 // Auto Slideshow
 
 setInterval(()=>{
@@ -395,12 +397,13 @@ setInterval(()=>{
 
     currentPhoto++;
 
-    if(
-      currentPhoto >=
-      photos.length
-    ){
-      currentPhoto = 0;
-    }
+    if(currentPhoto >= photos.length){
+
+clearInterval(slideshow);
+
+return;
+
+}
 
     galleryImage.style.opacity =
     "0";
@@ -417,20 +420,23 @@ setInterval(()=>{
 
   }
 
-},6000);
+},5000);
 
 // ---------- Gift ----------
 
 document
-.getElementById(
-  "toGiftBtn"
-)
+.getElementById("toGalleryBtn")
 .addEventListener(
   "click",
   ()=>{
 
+    currentPhoto = 0;
+
+    galleryImage.src =
+    photos[0];
+
     showScreen(
-      "gift-screen"
+      "gallery-screen"
     );
 
   }
