@@ -351,19 +351,6 @@ envelope.addEventListener(
   }
 );
 
-document
-.getElementById("toGalleryBtn")
-.addEventListener(
-  "click",
-  ()=>{
-
-    showScreen(
-      "gallery-screen"
-    );
-
-  }
-);
-
 // ---------- Gallery ----------
 
 const photos = [
