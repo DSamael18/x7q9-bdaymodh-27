@@ -596,3 +596,23 @@ document.addEventListener(
 
   }
 );
+
+const galleryBtn =
+document.getElementById("toGalleryBtn");
+
+if(galleryBtn){
+
+  galleryBtn.onclick = function(){
+
+    currentPhoto = 0;
+
+    galleryImage.src =
+    photos[0];
+
+    showScreen(
+      "gallery-screen"
+    );
+
+  };
+
+}
