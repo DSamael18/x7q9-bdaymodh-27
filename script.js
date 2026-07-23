@@ -346,9 +346,7 @@ envelope.addEventListener(
     letterContent.style.display =
     "block";
 
-    typeWriterEffect(
-      letterContent
-    );
+    //typeWriterEffect(letterContent);
 
   }
 );
