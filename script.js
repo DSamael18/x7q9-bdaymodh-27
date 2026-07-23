@@ -318,7 +318,7 @@ function typeWriterEffect(
   let i = 0;
 
   const timer =
-  const slideshow = setInterval(()=>{
+  setInterval(()=>{
 
     element.innerHTML =
     html.slice(0,i);
