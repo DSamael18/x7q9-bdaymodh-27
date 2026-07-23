@@ -198,6 +198,8 @@ transition:.5s;
 user-select:none;
 -webkit-user-drag:none;
 touch-action:pan-y;
+
+animation:photoFloat 4s ease-in-out infinite;
 }
 
 #galleryImage:hover{
